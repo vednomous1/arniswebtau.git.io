@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery | TAU Arnis Team</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #080d09;
+            color: #f4f7f2;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #0b120d;
+            border-bottom: 1px solid #293b2b;
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            color: #a4e83f;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #b5c0b3;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav .active {
+            color: #a4e83f;
+        }
+
+        /* BANNER */
+
+        .banner img {
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* INTRODUCTION */
+
+        .intro {
+            text-align: center;
+            padding: 55px 20px 35px;
+        }
+
+        .eyebrow {
+            color: #a4e83f;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .intro h1 {
+            font-size: clamp(34px, 5vw, 50px);
+            margin: 10px 0;
+        }
+
+        .intro h1 span {
+            color: #a4e83f;
+        }
+
+        .intro p {
+            max-width: 650px;
+            margin: auto;
+            color: #a7b1a5;
+            font-size: 15px;
+        }
+
+        /* GALLERY */
+
+        .gallery {
+            width: 88%;
+            max-width: 1250px;
+            margin: 0 auto 70px;
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+            font-size: 24px;
+            border-left: 4px solid #a4e83f;
+            padding-left: 12px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .photo-card {
+            background: #111a12;
+            border: 1px solid #293b2b;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .photo-card:hover {
+            border-color: #a4e83f;
+            transform: translateY(-4px);
+        }
+
+        .photo-card a {
+            display: block;
+            overflow: hidden;
+        }
+
+        .photo-card img {
+            display: block;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+
+        .photo-card a:hover img {
+            transform: scale(1.04);
+        }
+
+        .photo-info {
+            padding: 17px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #1b2b1b;
+            color: #a4e83f;
+            font-size: 10px;
+            letter-spacing: 1px;
+            padding: 4px 8px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+
+        .photo-info h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .photo-info p {
+            color: #a7b1a5;
+            font-size: 13px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 28px 15px;
+            background: #0b120d;
+            border-top: 1px solid #293b2b;
+            color: #a7b1a5;
+            font-size: 12px;
+        }
+
+        footer strong {
+            color: #a4e83f;
+            font-size: 16px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .gallery {
+                width: 92%;
+            }
+        }
+
+        @media (max-width: 550px) {
+            header {
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-card img {
+                height: 250px;
+            }
+
+            .intro {
+                padding-top: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo"
+           style="text-decoration: none;">
+            TAU ARNIS TEAM
+        </a>
+
+        <nav>
+            <a href="ArnisH2.html">Home</a>
+            <a href="ArnisH2.html#about">About</a>
+            <a href="ArnisGallery.html" class="active">Gallery</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- GALLERY BANNER -->
+    <section class="banner">
+        <img src="gallbanner.jpg"
+             alt="TAU Arnis Team Gallery Banner">
+    </section>
+
+    <!-- INTRODUCTION -->
+    <section class="intro">
+        <div class="eyebrow">OUR JOURNEY • OUR PRIDE</div>
+
+        <h1>Team <span>Gallery</span></h1>
+
+        <p>
+            Every photograph tells a story of teamwork, discipline,
+            friendship, and dedication to the art of Arnis.
+            Explore the memorable moments of our team.
+        </p>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <main class="gallery">
+
+        <h2 class="section-title">Our Memories</h2>
+
+        <div class="photo-grid">
+
+            <article class="photo-card">
+                <a href="Arnispic2.jpg" target="_blank">
+                    <img src="Arnispic2.jpg"
+                         alt="TAU Arnis Team group photo">
+                </a>
+
+                <div class="photo-info">
+                    <span class="tag">TEAM</span>
+                    <h3>One Team, One Family</h3>
+                    <p>United by discipline and teamwork.</p>
+                </div>
+            </article>
+
+            <article class="photo-card">
+                <a href="medals.jpg" target="_blank">
+                    <img src="medals.jpg"
+                         alt="Team medal celebration">
+                </a>
+
+                <div class="photo-info">
+                    <span class="tag">ACHIEVEMENTS</span>
+                    <h3>Earned Through Dedication</h3>
+                    <p>Celebrating hard work and success.</p>
+                </div>
+            </article>
+
+            <article class="photo-card">
+                <a href="traininggall.jpg" target="_blank">
+                    <img src="traininggall.jpg"
+                         alt="TAU Arnis Team training group">
+                </a>
+
+                <div class="photo-info">
+                    <span class="tag">TRAINING</span>
+                    <h3>Train With Purpose</h3>
+                    <p>Building skills and confidence together.</p>
+                </div>
+            </article>
+
+            <article class="photo-card">
+                <a href="teamphoto.jpg" target="_blank">
+                    <img src="teamphoto.jpg"
+                         alt="TAU Arnis Team holding their banner">
+                </a>
+
+                <div class="photo-info">
+                    <span class="tag">TEAM</span>
+                    <h3>Stronger Together</h3>
+                    <p>Proud to represent our university.</p>
+                </div>
+            </article>
+
+            <article class="photo-card">
+                <a href="coaches.jpg" target="_blank">
+                    <img src="coaches.jpg"
+                         alt="TAU Arnis Team coaches">
+                </a>
+
+                <div class="photo-info">
+                    <span class="tag">DISCIPLINE</span>
+                    <h3>Focused and Ready</h3>
+                    <p>Committed to training and growth.</p>
+                </div>
+            </article>
+
+            <article class="photo-card">
+                <a href="victory.jpg" target="_blank">
+                    <img src="victory.jpg"
+                         alt="TAU Arnis Team victory celebration">
+                </a>
+
+                <div class="photo-info">
+                    <span class="tag">SUCCESS</span>
+                    <h3>Victory in Motion</h3>
+                    <p>Hard-earned wins and proud moments.</p>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>TAU ARNIS TEAM</strong></p>
+        <p>Strength. Discipline. Unity.</p>
+        <p>&copy; 2026 TAU Arnis Team. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

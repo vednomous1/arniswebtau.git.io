@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements | TAU Arnis Team</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0b120d;
+            --card: #111d15;
+            --green: #1e3929;
+            --lime: #bfdc7a;
+            --white: #edf2eb;
+            --muted: #b8c3b8;
+            --border: #2a3d30;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            background: #0b120d;
+            border-bottom: 1px solid var(--border);
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: var(--lime);
+            font-size: 23px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--muted);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--lime);
+        }
+
+        .hero {
+            padding: 65px 7% 45px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: clamp(35px, 6vw, 62px);
+            line-height: 1.15;
+            margin: 14px 0;
+        }
+
+        h1 span {
+            color: var(--lime);
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .event-banner {
+            width: 72%;
+            max-width: 900px;
+            margin: 0 auto 28px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--card);
+        }
+
+        .event-banner img {
+            width: 100%;
+            height: clamp(140px, 20vw, 260px);
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .event-caption {
+            padding: 16px 18px;
+            text-align: center;
+        }
+
+        .event-caption h2 {
+            font-size: clamp(19px, 3vw, 28px);
+            margin-bottom: 5px;
+        }
+
+        .event-caption p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .container {
+            width: 86%;
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 35px 0 65px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 24px 12px;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        .stat-card .number {
+            color: var(--lime);
+            font-size: 34px;
+            font-weight: bold;
+        }
+
+        .stat-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .section-heading {
+            margin-bottom: 25px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(25px, 4vw, 36px);
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        .athlete-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 65px;
+        }
+
+        .athlete-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            transition: 0.25s;
+        }
+
+        .athlete-card:hover {
+            border-color: var(--lime);
+            transform: translateY(-3px);
+        }
+
+        .athlete-card h3 {
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .athlete-photo {
+            width: 100%;
+            height: 220px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #202b20;
+        }
+
+        .medal {
+            display: inline-block;
+            background: #202b20;
+            border: 1px solid #344634;
+            border-radius: 6px;
+            padding: 7px 10px;
+            margin: 4px 3px 0 0;
+            font-size: 12px;
+        }
+
+        .gold {
+            color: #ffd66b;
+        }
+
+        .bronze {
+            color: #e9a477;
+        }
+
+        .category {
+            display: block;
+            color: var(--muted);
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .team-photo {
+            margin-bottom: 65px;
+        }
+
+        .team-photo img {
+            width: 100%;
+            display: block;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+
+        .photo-caption {
+            color: var(--muted);
+            font-size: 13px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .closing {
+            background: linear-gradient(135deg, #142b19, #0d140e);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            text-align: center;
+            padding: 38px 20px;
+            margin-bottom: 65px;
+        }
+
+        .closing h2 {
+            color: var(--lime);
+            margin-bottom: 10px;
+        }
+
+        .closing p {
+            color: var(--muted);
+        }
+
+        .closing-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .back-button,
+        .secondary-button {
+            display: inline-block;
+            padding: 11px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .back-button {
+            background: var(--lime);
+            color: #10170c;
+        }
+
+        .secondary-button {
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--white);
+        }
+
+        .back-button:hover,
+        .secondary-button:hover {
+            transform: translateY(-2px);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 25px 15px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        footer strong {
+            color: var(--lime);
+        }
+
+        @media (max-width: 650px) {
+            header {
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            .event-banner,
+            .container {
+                width: 90%;
+            }
+
+            .stats {
+                gap: 8px;
+            }
+
+            .stat-card {
+                padding: 18px 5px;
+            }
+
+            .stat-card .number {
+                font-size: 27px;
+            }
+
+            .stat-card p {
+                font-size: 11px;
+            }
+
+            .athlete-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">TAU ARNIS TEAM</a>
+
+        <nav>
+            <a href="ArnisH2.html">Home</a>
+            <a href="ArnisGallery.html">Gallery</a>
+            <a href="achievements.html" class="active">Achievements</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+      
+        <h1>Our <span>Achievements</span></h1>
+        <p>
+            Celebrating the dedication, discipline, and competitive
+            spirit of the TAU Arnis Team at SCUAA Region III 2026.
+        </p>
+    </section>
+
+    <section class="event-banner">
+        <img
+            src="newbanner2.jpg"
+            alt="SCUAA Region III 2026 event poster"
+      
+        >
+
+        <div class="event-caption">
+            <h2>SCUAA Region III 2026</h2>
+            <p>
+                February 23–25, 2026 |
+                Nueva Ecija University of Science and Technology
+            </p>
+        </div>
+    </section>
+
+    <main class="container">
+
+        <section class="stats">
+            <div class="stat-card">
+                <div class="number">11</div>
+                <p>MEDALISTS</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="number">2</div>
+                <p>GOLD MEDALS</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="number">10</div>
+                <p>BRONZE MEDALS</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <div class="eyebrow">Our Champions</div>
+                <h2>Meet Our Medalists</h2>
+                <p>Recognizing every athlete's hard work and achievement.</p>
+            </div>
+
+            <div class="athlete-grid">
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="jeremiah.jpg" alt="Jeremiah G. Clemente">
+                    <h3>Jeremiah G. Clemente</h3>
+                    <span class="medal gold">🥇 GOLD</span>
+                    <span class="category">Live Stick — Light Weight</span>
+                    <span class="medal bronze">🥉 BRONZE</span>
+                    <span class="category">Padded Stick — Light Weight</span>
+                </article>
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="jones.jpg" alt="Jones Lee M. Paguirigan">
+                    <h3>Jones Lee M. Paguirigan</h3>
+                    <span class="medal gold">🥇 GOLD</span>
+                    <span class="category">Live Stick — Half Light Weight</span>
+                </article>
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="johnallen.jpg" alt="John Allen V. Sicangco">
+                    <h3>John Allen V. Sicangco</h3>
+                    <span class="medal bronze">🥉 BRONZE</span>
+                    <span class="category">Live Stick — Half Middle Weight</span>
+                </article>
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="paul.jpg" alt="Paul Zedrich T. Estrada">
+                    <h3>Paul Zedrich T. Estrada</h3>
+                    <span class="medal bronze">🥉 BRONZE</span>
+                    <span class="category">Live Stick</span>
+                </article>
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="cholo.jpg" alt="Cholo S. Aquino">
+                    <h3>Cholo S. Aquino</h3>
+                    <span class="medal bronze">🥉 BRONZE</span>
+                    <span class="category">Live Stick — Pin Weight</span>
+                </article>
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="johnpaul.jpg" alt="John Paul S. Dacalanio">
+                    <h3>John Paul S. Dacalanio</h3>
+                    <span class="medal bronze">🥉 BRONZE</span>
+                    <span class="category">Padded Stick — Pin Weight</span>
+                </article>
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="mark.jpg" alt="Mark Jeazon B. Villaver">
+                    <h3>Mark Jeazon B. Villaver</h3>
+                    <span class="medal bronze">🥉 BRONZE</span>
+                    <span class="category">Live Stick — Open Weight</span>
+                </article>
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="kevin.jpg" alt="Mark Kevin DC. Corpuz">
+                    <h3>Mark Kevin DC. Corpuz</h3>
+                    <span class="medal bronze">🥉 BRONZE</span>
+                    <span class="category">Padded Stick — Heavy Weight</span>
+                </article>
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="romer.jpg" alt="Romer B. Camilet">
+                    <h3>Romer B. Camilet</h3>
+                    <span class="medal bronze">🥉 BRONZE</span>
+                    <span class="category">Padded Stick — Extra Light Weight</span>
+                </article>
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="ashley.jpg" alt="Ashley Dheil F. Contreras">
+                    <h3>Ashley Dheil F. Contreras</h3>
+                    <span class="medal bronze">🥉 BRONZE</span>
+                    <span class="category">Padded Stick — Light Weight</span>
+                </article>
+
+                <article class="athlete-card">
+                    <img class="athlete-photo" src="krissa.jpg" alt="Krissa Mae R. Dangil">
+                    <h3>Krissa Mae R. Dangil</h3>
+                    <span class="medal bronze">🥉 BRONZE</span>
+                    <span class="category">Padded Stick — Pin Weight</span>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="team-photo">
+            <div class="section-heading">
+                <div class="eyebrow">One Team, One Goal</div>
+                <h2>Our Team, Our Pride</h2>
+            </div>
+
+            <img
+                src="medals.jpg"
+                alt="TAU Arnis Team members celebrating their medals"
+            >
+
+            <p class="photo-caption">
+                Every medal represents dedication, discipline, and teamwork.
+            </p>
+        </section>
+
+        <section class="closing">
+            <h2>More Than Medals</h2>
+            <p>
+                We compete with discipline, grow through challenges,
+                and stand together as one team.
+            </p>
+
+          
+        </section>
+
+    </main>
+
+    <footer>
+        <p><strong>TAU ARNIS TEAM</strong></p>
+        <p>© 2026 TAU Arnis Team. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
